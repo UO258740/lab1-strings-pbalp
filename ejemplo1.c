@@ -16,7 +16,7 @@
 #include <string.h>
 #include <stdlib.h>
  
-char array1[] = "Foo" "bar";
+char array1[] = "Foo" "bar"; // 
 char array2[] = { 'F', 'o', 'o', 'b', 'a', 'r', '\0' };
  
 enum { BUFFER_MAX_SIZE = 1024 };
