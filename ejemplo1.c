@@ -21,24 +21,24 @@ char array2[] = { 'F', 'o', 'o', 'b', 'a', 'r', '\0' };
  
 enum { BUFFER_MAX_SIZE = 1024 };
  
-const char* s1 = R"foo(
+const char* s1 = R"foo( 
 Hello
 World
-)foo";
+)foo"; // ERROR: R solo se admite en versiones de C++11 o mas recientes
 const char* s2 = "\nHello\nWorld\n";
 
 void gets_example_func(void) {
   char buf[BUFFER_MAX_SIZE];
  
-  if (fgets(buf, sizeof(buf), stdin) == NULL) {
-        return 1;
+  if (fgets(buf, sizeof(buf), stdin) == NULL) { // fgets es una funcion deprecada
+        return 1; // ERROR: Una funcion vacia no puede retornar un valor
   }
   buf[strlen(buf) - 1] = '\0';
 }
 
 const char *get_dirname(const char *pathname) {
   char *slash;
-  slash = strrchr(pathname, '/');
+  slash = strrchr(pathname, '/'); // ERROR: Se asigna un char * a un const char * (Valores incompatibles)
   if (slash) {
     *slash = '\0'; /* Undefined behavior */
   }
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     char array3[16];
     char array4[16];
     char array5 []  = "01234567890123456";
-    char *ptr_char  = "new string literal";
+    char *ptr_char  = "new string literal"; // WARNING: Las versiones C++11 o mas antiguas no admiten la conversion de String literal a char *
     int size_array1 = strlen("аналитик");
     int size_array2 = 100;
     
